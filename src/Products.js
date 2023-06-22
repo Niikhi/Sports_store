@@ -3,13 +3,10 @@ import styled from "styled-components";
 import FilterSection from "./components/FilterSection";
 import Sort from "./components/Sort";
 import ProductList from "./components/ProductList";
-import { useFilterContext } from "./context/filtercontext";
 
 
 
 const Products = () => {
-
-  const {filte_products} = useFilterContext(); 
   return (
    <Wrapper>
 
@@ -26,17 +23,13 @@ const Products = () => {
       <div className="main-product">
         <ProductList />
       </div>
-
     </section>
-
-
    </div>
-
-
   </Wrapper>);
 };
 
 const Wrapper = styled.section`
+margin-top:20rem;
   .grid-filter-column {
     grid-template-columns: 0.2fr 1fr;
   }
