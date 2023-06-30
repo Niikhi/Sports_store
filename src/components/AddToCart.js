@@ -4,8 +4,10 @@ import styled from "styled-components";
 import CartQuantity from "./CartQuantity";
 import { NavLink } from "react-router-dom";
 import { Button } from "../styles/Button";
+import { useCartContext} from "../context/cartcontext"
 
 const AddToCart = ({product}) => {
+  const {addToCart} = useCartContext();
 
 const {id,colors,stock} = product; 
 const [color, setColor] = useState(colors[0]);
@@ -48,7 +50,8 @@ const decrease = () => {
         decrease = {decrease}
         />
 
-        <NavLink to="/cart">
+        <NavLink to="/cart"
+        onClick={() => addToCart(id,color,quantity,product)}>
             <Button className="btn" > Add To Cart</Button>
         </NavLink>
 
@@ -89,7 +92,7 @@ const Wrapper = styled.section`
   }
 
   /* we can use it as a global one too  */
-  .quantity-toggle {
+  .amount-toggle {
     margin-top: 3rem;
     margin-bottom: 1rem;
     display: flex;
@@ -103,7 +106,7 @@ const Wrapper = styled.section`
       cursor: pointer;
     }
 
-    .quantity-style {
+    .amount-style {
       font-size: 2.4rem;
       color: ${({ theme }) => theme.colors.btn};
     }
